@@ -12,7 +12,7 @@ This project allows users to explore Star Wars data from
 Clone the repository:
 
 ```shell
-git clone https://github.com/potasiak/starwars.git
+git clone https://github.com/potasiak/starwars.git && cd starwars
 ```
 
 Create a virtual environment (whichever you like the most, I like 
