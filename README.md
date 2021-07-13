@@ -56,6 +56,13 @@ You can also run tests with coverage:
 pytest --cov=starwars
 ```
 
+## Configuration
+
+| Key                        | Description                                     |
+| -------------------------- | ----------------------------------------------- |
+| `DATASET_FETCH_URL`        | Initial URL to fetch first page of people from. |
+| `DATASET_DEFAULT_PER_PAGE` | Number of rows displayed per page.              |
+
 ## Usage
 
 I described what you can do in the application in case anyone needs it.
