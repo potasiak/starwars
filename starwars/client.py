@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from typing import Callable, ContextManager, Mapping
 
 import requests
@@ -26,7 +24,7 @@ class StarWarsClient(ContextManager):
             self.session_maker = self.default_session_maker
         self._session = None
 
-    def __enter__(self) -> StarWarsClient:
+    def __enter__(self) -> 'StarWarsClient':
         self.open()
         return self
 

@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 import pathlib
 from uuid import uuid4
 
@@ -7,7 +5,7 @@ from django.db import models
 from django.utils import timezone
 
 
-def dataset_destination(instance: Dataset, filename: str = None) -> str:
+def dataset_destination(instance: 'Dataset', filename: str = None) -> str:
     """Determine dataset upload destination path.
 
     When the ``filename`` is not specified, the file is saved with a ``.csv``
@@ -22,7 +20,10 @@ def dataset_destination(instance: Dataset, filename: str = None) -> str:
 
     """
     file_extension = pathlib.Path(filename).suffix if filename else '.csv'
-    return f'datasets/%Y/%m/%d/{instance.uuid!s}{file_extension!s}'
+    return (
+        f'datasets/{instance.date.year}/{instance.date.month}/'
+        f'{instance.date.day}/{instance.uuid!s}{file_extension!s}'
+    )
 
 
 class Dataset(models.Model):

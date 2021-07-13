@@ -5,7 +5,7 @@ This project allows users to explore Star Wars data from
 
 ## Requirements
 
-* Python 3.6+ (_3.8+ recommended_)
+* Python 3.6+
 
 ## Installation
 
