@@ -115,7 +115,7 @@ rather good-enough for its purpose. There is a lot of space for improvements:
    dataset, they might except high latency due to CPU waiting for I/O-bound
    operations.
    
-3. There could be **more thorough tests**. Current test coverage is 77%.
+3. There could be **more thorough tests**. Current test coverage is 78%.
    The views are not tested at all, and other functions are tested only for 
    basic cases. Because of a limited time, it could not be done better.
    
