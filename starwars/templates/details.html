@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% load query_string %}
+
+{% block title %}Dataset {{ dataset }} - {{ super }}{% endblock %}
+
+{% block content %}
+  <a href="{% url 'index' %}">&lt; All datasets</a>
+  <h2>Dataset <span class="text-muted">{{ dataset.uuid }}</span></h2>
+  <div class="row">
+    <small class="text-muted ms-2">{{ dataset.date }}</small>
+  </div>
+
+  <div class="row my-4">
+    <div class="col-auto">
+      Count values by
+    </div>
+    <div class="col btn-group">
+      {% for field in available_fields %}
+      <a
+        href="{% url 'details' dataset_uuid=dataset.uuid %}?{% query_string_list_toggle request 'field' field %}"
+        class="btn btn-sm {% if field in fields %}btn-primary{% else %}btn-light{% endif %}"
+      >
+        {{ field }}
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        {% for col in header %}
+          <th>
+            <a
+              href="{% url 'details' dataset_uuid=dataset.uuid %}?{% query_string_order_by_toggle request col %}"
+              class="text-decoration-none"
+            >
+              {{ col }}
+            </a>
+          </th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in data %}
+      <tr>
+        {% for col in row %}
+          <td>{{ col }}</td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% if next_limit %}
+    <a
+      href="{% url 'details' dataset_uuid=dataset.uuid %}?{% query_string_set request limit=next_limit %}"
+      class="btn btn-light"
+    >
+      Show more
+    </a>
+  {% endif %}
+{% endblock content %}
