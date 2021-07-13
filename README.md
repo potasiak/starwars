@@ -50,6 +50,12 @@ I like to use `pytest` due to its simplicity.
 pytest
 ```
 
+You can also run tests with coverage:
+
+```shell
+pytest --cov=starwars
+```
+
 ## Usage
 
 I described what you can do in the application in case anyone needs it.
@@ -109,9 +115,9 @@ rather good-enough for its purpose. There is a lot of space for improvements:
    dataset, they might except high latency due to CPU waiting for I/O-bound
    operations.
    
-3. There could be **more thorough tests**. The views are not tested at all, and 
-   other functions are tested only for basic cases. Because of a limited time,
-   it could not be done better.
+3. There could be **more thorough tests**. Current test coverage is 77%.
+   The views are not tested at all, and other functions are tested only for 
+   basic cases. Because of a limited time, it could not be done better.
    
 4. It's hard to decide on **system's architecture** when it's purpose is not 
    clear. Obviously, it's just a sample application, so there was nothing 

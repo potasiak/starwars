@@ -130,11 +130,13 @@ def sort_django_style(table: petl.Table, order_by: Optional[str]) -> petl.Table:
         ETL table sorted by given column and order.
 
     """
-    if not order_by or order_by not in petl.header(table):
+    if not order_by:
         return table
     reverse = order_by.startswith('-')
     if reverse:
         order_by = order_by[1:]
+    if order_by not in petl.header(table):
+        return table
     return petl.sort(table, key=order_by, reverse=reverse)
 
 
